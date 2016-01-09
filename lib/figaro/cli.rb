@@ -31,6 +31,7 @@ module Figaro
       default: "config/application.yml",
       desc: "Specify a configuration file path"
     method_option "remote",
+      aliases: ["-r"],
       desc: "Specify a Heroku git remote"
 
     define_method "heroku:set" do
@@ -45,19 +46,11 @@ module Figaro
       Sends the Figaro configuration to a Dokku APP on the Dokku SERVER.
 
       Since Dokku does not provide a client, this command requires that:\n\n
-      1. the 'dokku' user can ssh into the Dokku server from the local machine\n\n
-      2. the Dokku server (e.g. dokku-example.com) and app name (e.g. my-app) are specified
+      1. Add git remote dokku repository\n\n
+      2. Do following command `gem install dokku-cli`
       \n\n
     LONGDESC
 
-    method_option "server",
-      required: true,
-      aliases: ["-s"],
-      desc: "Specify a Dokku server (e.g. dokku-example.com)"
-    method_option "app",
-      required: true, 
-      aliases: ["-a"],
-      desc: "Specify a Dokku app (e.g. my-dokku-app)"
     method_option "environment",
       aliases: ["-e"],
       desc: "Specify an application environment"
